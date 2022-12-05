@@ -1,8 +1,8 @@
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
-import Router from '@containers/Router'
+import router from '@containers/router'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorker from './serviceWorker'
 import theme from './theme'
@@ -14,10 +14,8 @@ const root = ReactDOM.createRoot(container)
 root.render(
   <StrictMode>
     <ChakraProvider theme={theme}>
-      <HashRouter>
-        <ColorModeScript />
-        <Router />
-      </HashRouter>
+      <RouterProvider router={router} />
+      <ColorModeScript />
     </ChakraProvider>
   </StrictMode>,
 )

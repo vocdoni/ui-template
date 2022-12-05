@@ -3,7 +3,7 @@ import { ColorModeSwitcher } from '@components/ColorModeSwitcher'
 import { Outlet } from 'react-router-dom'
 
 const Layout = () => (
-  <Box textAlign='center' fontSize='xl'>
+  <Box>
     <Grid p={3}>
       <ColorModeSwitcher justifySelf='flex-end' />
       <Outlet />
