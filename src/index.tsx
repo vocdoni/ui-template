@@ -1,20 +1,25 @@
-import { ColorModeScript } from "@chakra-ui/react"
-import * as React from "react"
-import * as ReactDOM from "react-dom/client"
-import { App } from "./App"
-import reportWebVitals from "./reportWebVitals"
-import * as serviceWorker from "./serviceWorker"
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
+import Router from '@containers/Router'
+import { StrictMode } from 'react'
+import * as ReactDOM from 'react-dom/client'
+import { HashRouter } from 'react-router-dom'
+import reportWebVitals from './reportWebVitals'
+import * as serviceWorker from './serviceWorker'
+import theme from './theme'
 
-
-const container = document.getElementById("root")
+const container = document.getElementById('root')
 if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container)
 
 root.render(
-  <React.StrictMode>
-    <ColorModeScript />
-    <App />
-  </React.StrictMode>,
+  <StrictMode>
+    <ChakraProvider theme={theme}>
+      <HashRouter>
+        <ColorModeScript />
+        <Router />
+      </HashRouter>
+    </ChakraProvider>
+  </StrictMode>,
 )
 
 // If you want your app to work offline and load faster, you can change
@@ -26,4 +31,3 @@ serviceWorker.unregister()
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
-
