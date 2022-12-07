@@ -1,9 +1,10 @@
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
-import router from '@containers/router'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
+
 import reportWebVitals from './reportWebVitals'
+import router from './router'
 import * as serviceWorker from './serviceWorker'
 import theme from './theme'
 

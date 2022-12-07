@@ -2,7 +2,7 @@ import { Button, Input, InputGroup, InputRightElement, Text, VStack } from '@cha
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const App = () => {
+const Home = () => {
   const nav = useNavigate()
   const ref = useRef<HTMLInputElement>(null)
 
@@ -17,6 +17,7 @@ export const App = () => {
       <InputGroup>
         <Input
           ref={ref}
+          autoFocus
           type='text'
           placeholder='0x0230...'
           onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -36,3 +37,5 @@ export const App = () => {
     </VStack>
   )
 }
+
+export default Home

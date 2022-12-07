@@ -1,9 +1,9 @@
 import { render } from '@src/test-utils';
 import { screen } from '@testing-library/react';
-import { App } from './App';
+import Home from './Home';
 
 test('renders input label', () => {
-  render(<App />)
+  render(<Home />)
   const linkElement = screen.getByText(/Specify a process ID/i)
   expect(linkElement).toBeInTheDocument()
 })

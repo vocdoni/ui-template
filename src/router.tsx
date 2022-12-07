@@ -1,15 +1,15 @@
-import Vote from '@components/Vote'
+import Error404 from '@elements/Error404'
+import Home from '@elements/Home'
+import RouteError from '@elements/RouteError'
+import Vote from '@elements/Vote'
 import Layout from '@src/Layout'
 import { EnvironmentInitialitzationOptions, VocdoniSDKClient } from '@vocdoni/sdk'
 import { createHashRouter, createRoutesFromElements, Route } from 'react-router-dom'
-import { App } from './App'
-import Error404 from './Error404'
-import RouteError from './RouteError'
 
 const router = createHashRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-      <Route index element={<App />} />
+      <Route index element={<Home />} />
       <Route
         element={<Vote />}
         errorElement={<RouteError />}

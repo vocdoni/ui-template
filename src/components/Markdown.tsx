@@ -34,7 +34,7 @@ const Markdown = ({children}: {children?: string}) => {
             <Heading size='md' mt={5} mb={4} {...props}>{children}</Heading>
           ),
           h3: ({node, children, ...props}) => (
-            <Heading size='sm' mt={5} mb={4} {...props}>{children}</Heading>
+            <Heading as='h3' size='sm' mt={5} mb={4} {...props}>{children}</Heading>
           ),
           ol: ({node, children, ...props}) => (
             <OrderedList {...props}>{children}</OrderedList>
