@@ -32,5 +32,8 @@ export const VariantBox = defineStyleConfig({
     question: {
       marginBottom: '2em',
     },
+    questions: {
+      // nothing for now
+    },
   },
 })

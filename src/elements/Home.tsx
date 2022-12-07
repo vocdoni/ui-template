@@ -1,39 +1,58 @@
-import { Button, Input, InputGroup, InputRightElement, Text, VStack } from '@chakra-ui/react'
-import React, { useRef } from 'react'
+import { Button, FormControl, FormErrorMessage, Input, InputGroup, InputRightElement, Text, VStack } from '@chakra-ui/react'
+import { Field, Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
+
+interface HomeForm {
+  processId: string
+}
 
 const Home = () => {
   const nav = useNavigate()
-  const ref = useRef<HTMLInputElement>(null)
-
   const goto = (pid: string) => {
     const id = pid.replace('0x', '')
     return nav(`/process/${id}`)
   }
 
+  const vals : HomeForm = {
+    processId: '',
+  }
+
   return (
     <VStack spacing={8}>
       <Text>Specify a process ID to easily navigate to it:</Text>
-      <InputGroup>
-        <Input
-          ref={ref}
-          autoFocus
-          type='text'
-          placeholder='0x0230...'
-          onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Enter') {
-              goto((e.target as HTMLInputElement).value)
-            }
-          }}
-        />
-        <InputRightElement>
-          <Button size='xs' mr={2} onClick={() => {
-            goto(ref.current?.value as string)
-          }}>
-            Go
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+      <Formik
+        initialValues={vals}
+        onSubmit={(values) =>
+          goto(values.processId)
+        }
+      >
+        {({handleSubmit, errors, touched}) => (
+          <form onSubmit={handleSubmit} style={{width: '100%'}}>
+            <FormControl isInvalid={!!errors.processId && touched.processId}>
+              <InputGroup>
+                <Field
+                  as={Input}
+                  autoFocus
+                  name='processId'
+                  type='text'
+                  validate={(value: string) => {
+                    if (value.length <= 10) {
+                      return 'Specify a proper process id'
+                    }
+                  }}
+                  placeholder='0x0230...'
+                />
+                <InputRightElement>
+                  <Button type='submit' size='xs' mr={2}>
+                    Go
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>{errors.processId}</FormErrorMessage>
+            </FormControl>
+          </form>
+        )}
+      </Formik>
     </VStack>
   )
 }
