@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { ChakraProvider, theme } from '@chakra-ui/react'
-import router from '@containers/router'
+import router from '@src/router'
 import { render, RenderOptions } from '@testing-library/react'
 import * as React from 'react'
 import { RouterProvider } from 'react-router-dom'
