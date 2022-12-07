@@ -69,8 +69,12 @@ const Questions = ({questions}: {questions? : IQuestion[]}) => {
     <VariantBox variant='questions'>
       <Formik
         initialValues={initialValues}
-        onSubmit={console.log}
         validationSchema={validationSchema}
+        onSubmit={(values) => {
+          // remap values back to expected SDK format
+          const mapped = questions.map((q) => values[q.title.default])
+          console.log('received:', mapped)
+        }}
       >
         {({handleSubmit, errors, touched}) => (
           <form onSubmit={handleSubmit}>

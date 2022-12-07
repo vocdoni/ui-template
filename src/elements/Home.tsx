@@ -36,7 +36,7 @@ const Home = () => {
                   name='processId'
                   type='text'
                   validate={(value: string) => {
-                    if (value.length <= 10) {
+                    if (value.length <= 32) {
                       return 'Specify a proper process id'
                     }
                   }}
