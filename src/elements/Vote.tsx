@@ -1,10 +1,12 @@
 import { Box, Heading } from '@chakra-ui/react'
+import HR from '@components/HR'
+import Questions from '@components/Questions'
 import { IElection as IElectionMetadata } from '@vocdoni/sdk'
 import { IElection } from '@vocdoni/sdk/dist/api/election'
 import { MultiLanguage } from '@vocdoni/sdk/dist/util/lang'
 import { format } from 'date-fns'
 import { useLoaderData } from 'react-router-dom'
-import Markdown from './Markdown'
+import Markdown from '../components/Markdown'
 
 const Vote = () => {
   const data = (useLoaderData() as IElection)
@@ -12,7 +14,7 @@ const Vote = () => {
 
   return (
     <Box m={5}>
-      <Heading size='2xl' lineHeight={1.1} mb={3} textAlign='center'>
+      <Heading lineHeight={1.1} mb={3} textAlign='center' as='h1'>
         {(metadata.title as MultiLanguage<string>).default}
       </Heading>
       <Heading size='sm' variant='subtitle' textAlign='center'>
@@ -21,6 +23,10 @@ const Vote = () => {
       <Markdown>
         {(metadata.description as MultiLanguage<string>).default}
       </Markdown>
+      <HR />
+      <Questions
+        questions={metadata.questions}
+      />
     </Box>
   )
 }
